@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  api:
+    image: wapi:prod
+    build:
+      context: ./weather_api
+    env_file:
+      - ./weather_api/.env.local
+    ports:
+      - 4001:4000
+  fe:
+    image: fe:prod
+    build:
+      context: ./fe
+    ports:
+      - 8080:80
+    depends_on:
+      - api
+  

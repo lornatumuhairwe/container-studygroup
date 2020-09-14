@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  api:
+    image: wapi:dev
+    build:
+      context: ./weather_api
+      target: base
+    env_file:
+      - ./weather_api/.env.local
+      - ./weather_api/.env.dev
+    ports:
+      - 4001:4000
+    command: mix phx.server
+  fe:
+    image: fe:dev
+    build:
+      context: ./fe
+      target: dev
+    volumes:
+      - ./fe:/usr/src/fe
+      - /usr/src/fe/node_modules
+    ports:
+      - 3001:3000
+    depends_on:
+      - api
+    stdin_open: true
+    command: npm start

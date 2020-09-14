@@ -1,0 +1,11 @@
+FROM node:10.21-alpine3.9 
+
+WORKDIR /usr/src/fe
+
+COPY package*.json ./
+
+RUN npm install --silent
+
+COPY . .
+
+CMD ["npm", "start"]
