@@ -5,7 +5,7 @@ defmodule WeatherApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", WeatherApiWeb do
+  scope "/api", WeatherApiWeb do
     pipe_through :api
 
     get "/", HomeController, :index

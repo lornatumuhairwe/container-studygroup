@@ -1,6 +1,8 @@
 ## Demo
 Simple backend and ui to demo multistage builds for the first session of the containers study group!
 
+Additionally, there are also instructions on how to deploy the images built here to a kubernetes cluster. Find these instructions [here](deployment/readme.md)
+
 ## Stack
 - [Backend](weather_api/README.md) - Elixir/Phoenix
 - [Frontend](fe/README.md) - ReactJS

@@ -14,7 +14,7 @@ export default class Weather extends React.Component {
 
     fetchWeather = () => {
         let city = this.state.toSearch;
-        fetch(`http://localhost:4001?q=${city}`)
+        fetch(`/api?q=${city}`)
         .then(res => res.json())
         .then(result => {
             this.setState({

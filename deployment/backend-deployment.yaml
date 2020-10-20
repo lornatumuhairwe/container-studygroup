@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wapi-deployment
+  labels:
+    app: wapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wapi
+  template:
+    metadata:
+      labels:
+        app: wapi
+    spec:
+      containers:
+        - name: wapi
+          image: muhairwe/wapi:prod
+          imagePullPolicy: Never
+          env:
+          - name: MIX_ENV
+            value: prod
+          - name: OPEN_WEATHER_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: wapi-env
+                key: api_key
+          - name: SECRET_KEY_BASE
+            valueFrom:
+              secretKeyRef:
+                name: wapi-env
+                key: secret_key_base
+          ports:
+            - containerPort: 4000

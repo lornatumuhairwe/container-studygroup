@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wapi-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: wapi
+  ports:
+    - protocol: TCP
+      port: 4000
+      targetPort: 4000
+      
